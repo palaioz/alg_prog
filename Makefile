@@ -46,6 +46,8 @@ $(BIN_DIR)/%: $(OBJ_DIR)/%.o
 # Limpeza
 .PHONY: clean
 clean:
-	@if exist "$(OBJ_DIR)" del /Q "$(OBJ_DIR)\*.o"
+	@if exist "$(OBJ_DIR)" for /D %%d in ("$(OBJ_DIR)\*") do rd /S /Q "%%d"
+	@if exist "$(BIN_DIR)" for /D %%d in ("$(BIN_DIR)\*") do rd /S /Q "%%d"
+	@if exist "$(OBJ_DIR)" del /Q "$(OBJ_DIR)\*.o" 
 	@if exist "$(BIN_DIR)" del /Q "$(BIN_DIR)\*.exe"
 	@echo "Cleanup complete!"

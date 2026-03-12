@@ -37,5 +37,3 @@ Para remover os executáveis e objetos compilados:
 ```bash
 make clean
 ```
-
-
