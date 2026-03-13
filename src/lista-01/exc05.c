@@ -11,6 +11,7 @@ int main(){
     
     printf("Total de eleitores, brancos, nulos e validos: ");
     scanf("%d %d %d %d", &total, &brancos, &nulos, &validos);
+    
     printf("\nBrancos: %.2f", (float)brancos/total * 100);
     printf("\nNulos: %.2f%%\n", (float)nulos/total * 100);
     printf("Validos: %.2f%%\n", (float)validos/total * 100);
