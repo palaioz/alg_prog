@@ -4,10 +4,24 @@
 // utilizando a fórmula de Báskara.
 
 #include <stdio.h>
+#include <math.h>
 
 int main(){
 
-    
+    while(1){
+        
+        float a, b, c, x1, x2, delta;
 
+        printf("\nDigite os coeficientes a, b e c: ");
+        scanf("%f %f %f", &a, &b, &c);
+        
+        delta = b * b - 4 * a * c;
+        
+        x1 = (-b + sqrt(delta)) / (2 * a);
+        x2 = (-b - sqrt(delta)) / (2 * a);
+
+        printf("\nx1 = %.2f \nx2 = %.2f", x1, x2);
+
+    }
     return 0;
 }
