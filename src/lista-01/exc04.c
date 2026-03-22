@@ -13,7 +13,7 @@ int main(){
 
     media = (n1 + n2) / 2;
 
-    prinf("\nMedia final: %.2f", media);
+    printf("\nMedia final: %.2f", media);
 
     return 0;
 }

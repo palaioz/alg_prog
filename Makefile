@@ -1,53 +1,50 @@
-# Compilador
+# Compilador e flags
 CC = gcc
 CFLAGS = -std=c99 -Wall -Wextra -g
 
-# Diretórios
+#Diretórios
 SRC_DIR = src
 OBJ_DIR = obj
 BIN_DIR = bin
 
-# Busca todos os .c em src
-SOURCES := $(wildcard $(SRC_DIR)/*.c)
-OBJECTS := $(SOURCES:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
-BINARIES := $(SOURCES:$(SRC_DIR)/%.c=$(BIN_DIR)/%)
+# Busca todos os .c em src e subdiretórios
+SOURCES := $(shell find $(SRC_DIR) -name '*.c')
+OBJECTS := $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SOURCES))
+BINARIES := $(patsubst $(SRC_DIR)/%.c,$(BIN_DIR)/%,$(SOURCES))
 
 .PRECIOUS: $(OBJECTS)
 
-
-# Se o usuário passar file=nome.c
 ifdef file
-FILE_SRC := $(SRC_DIR)/$(file)
-FILE_OBJ := $(OBJ_DIR)/$(file:.c=.o)
-FILE_BIN := $(BIN_DIR)/$(file:.c=)
-all: $(FILE_BIN)
+TARGET := $(BIN_DIR)/$(file:.c=)
 else ifdef dir
-DIR_SRC := $(wildcard $(SRC_DIR)/$(dir)/*.c)
-DIR_OBJ := $(DIR_SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
-DIR_BIN := $(DIR_SRC:$(SRC_DIR)/%.c=$(BIN_DIR)/%)
-all: $(DIR_BIN)
+DIR_SOURCES := $(shell find $(SRC_DIR)/$(dir) -name '*.c')
+TARGET := $(patsubst $(SRC_DIR)/%.c,$(BIN_DIR)/%,$(DIR_SOURCES))
 else
-# Regra padrão: compilar todos
-all: $(BINARIES)
+TARGET := $(BINARIES)
 endif
 
-# Como compilar cada .o
+# Regra padrão: compilar tudo
+all: $(TARGET)
+
+# Compilar .o
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@if not exist "$(dir $@)" mkdir "$(dir $@)"
+	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
-	@echo "Compiled $< successfully!"
 
-# Como gerar cada .exe
+# Gerar executável
 $(BIN_DIR)/%: $(OBJ_DIR)/%.o
-	@if not exist "$(dir $@)" mkdir "$(dir $@)"
+	@mkdir -p $(dir $@)
 	$(CC) $< -o $@
-	@echo "Linked $@ successfully!"
 
-# Limpeza
-.PHONY: clean
+# Compila e executa o binário na sequência
+run: $(TARGET)
+	@if [ -n "$(file)" ]; then \
+	    echo "Running $(TARGET)..."; \
+	    ./$(TARGET); \
+	else \
+	    echo "Use 'make file=algum.c run' para executar um binário específico."; \
+	fi
+
+# Remove as pastas bin/ e obj/
 clean:
-	@if exist "$(OBJ_DIR)" for /D %%d in ("$(OBJ_DIR)\*") do rd /S /Q "%%d"
-	@if exist "$(BIN_DIR)" for /D %%d in ("$(BIN_DIR)\*") do rd /S /Q "%%d"
-	@if exist "$(OBJ_DIR)" del /Q "$(OBJ_DIR)\*.o" 
-	@if exist "$(BIN_DIR)" del /Q "$(BIN_DIR)\*.exe"
-	@echo "Cleanup complete!"
+	rm -rf $(OBJ_DIR) $(BIN_DIR)
