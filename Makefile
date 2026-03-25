@@ -45,6 +45,18 @@ run: $(TARGET)
 	    echo "Use 'make file=algum.c run' para executar um binário específico."; \
 	fi
 
+
+# Compactar um diretório específico
+zip:
+	@if [ -n "$(dir)" ]; then \
+    	echo "Compactando arquivos de $(SRC_DIR)/$(dir)..."; \
+    	powershell -Command "Compress-Archive -Path $(SRC_DIR)/$(dir)\\*.c -DestinationPath $(dir).zip"; \
+    	echo "Arquivo $(dir).zip criado com sucesso."; \
+	else \
+    	echo "Use 'make dir=<diretorio> zip' para compactar os arquivos de um diretório específico."; \
+	fi
+
+
 # Remove as pastas bin/ e obj/
 clean:
 	rm -rf $(OBJ_DIR) $(BIN_DIR)
