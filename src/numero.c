@@ -9,8 +9,8 @@ int guessNumber(){
     srand(time(NULL));
     magic = rand() % 100;
     
-    printf("Qual numero estou pensando (%d)?\n", magic);
-    scanf("%d", &adv);
+    printf("Qual numero estou pensando (%f)?\n", magic);
+    scanf("%f", &adv);
     
     if (adv == magic){
         printf("sao iguais");
@@ -23,17 +23,17 @@ int guessNumber(){
 
 int maxValue(){
 
-    int a, b;
+    float a, b;
 
-    printf("Digite dois numeros: ");
-    scanf("%d %d", &a, &b);
+    printf("\nDigite dois numeros: ");
+    scanf("%f %f", &a, &b);
 
     if (a == b){
-        printf("%d e %d sao iguais", a, b);
+        printf("%.2f e %.2f sao iguais", a, b);
     } else if (a > b){
-        printf("valor %d maior que %d", a, b);
+        printf("valor %.2f maior que %.2f", a, b);
     } else {
-        printf("%d e maior que %d", b, a);
+        printf("%.2f e maior que %.2f", b, a);
     }
 
     return 0;
@@ -41,9 +41,10 @@ int maxValue(){
 
 int main(){
 
-    // guessNumber();
-    // printf("\n\n");
-    maxValue();
-
+    while (1){
+        // guessNumber();
+        // printf("\n\n");
+        maxValue();
+    }
     return 0;
 }
