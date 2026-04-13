@@ -12,35 +12,35 @@
 #include <stdio.h>
 
 int main(){
-    while (1){
-        int operacao;
-        float a, b;
 
-        printf("\n\nEscolha uma operacao:");
-        printf("\n1. +");
-        printf("\n2. -");
-        printf("\n3. *");
-        printf("\n4. /\n\n");
-        scanf("%d", &operacao);
-        
-        switch (operacao)
-        {
+    int operacao;
+    float a, b;
+
+    printf("\n\nEscolha uma operacao:");
+    printf("\n1. +");
+    printf("\n2. -");
+    printf("\n3. *");
+    printf("\n4. /\n\n");
+    scanf("%d", &operacao);
+    
+    switch (operacao)
+    {
         case 1:
             printf("\nDigite A e B: ");
             scanf("%f %f", &a, &b);
 
             float soma = a + b;
 
-            printf("\nResultado: %f", soma);
+            printf("\n%.2f + %.2f = %.2f", a, b, soma);
             break;
-        
+    
         case 2:
             printf("\nDigite A e B: ");
             scanf("%f %f", &a, &b);
 
             float subtr = a - b;
 
-            printf("\nResultado: %f", subtr);
+            printf("\n%.2f - %.2f = %.2f", a, b, subtr);
             break;
 
         case 3:
@@ -49,7 +49,7 @@ int main(){
 
             float mult = a * b;
 
-            printf("\nResultado: %f", mult);
+            printf("\n%.2f * %.2f = %.2f", a, b, mult);
             break;
 
         case 4:
@@ -58,12 +58,12 @@ int main(){
 
             float div = a / b;
 
-            printf("Resultado: %f", div);
+            printf("%.2f / %.2f = %.2f", a, b, div);
             break;
 
         default:
             break;
-        }
     }
+
     return 0;
 }
