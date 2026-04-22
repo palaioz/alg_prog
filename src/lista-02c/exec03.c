@@ -6,6 +6,14 @@
 #include <stdio.h>
 
 int main(){
-	printf("Hello World");
+	int anos, meses, dias;
+
+	printf("Digite sua idade (anos meses dias): ");
+	scanf("%d %d %d", &anos, &meses, &dias);
+
+	int idade_em_dias = (anos * 365) + (meses * 30) + dias;
+
+	printf("Sua idade em dias: %d dias.", idade_em_dias);
+
 	return 0;
 }

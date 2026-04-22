@@ -12,6 +12,30 @@
 #include <stdio.h>
 
 int main(){
-	printf("Hello World");
+	int idade;
+	const char *faixa_etaria;
+
+	printf("Digite uma idade: ");
+	scanf("%d", &idade);
+
+	if (idade >= 60){
+		faixa_etaria = "IDOSO";
+	} else if (idade < 60 && idade >= 26){
+		faixa_etaria = "ADULTO";
+	} else if (idade < 26 && idade >= 18){
+		faixa_etaria = "JOVEM";
+	} else if (idade < 18 && idade >= 12){
+		faixa_etaria = "ADOLESCENTE";
+	} else if (idade < 12 && idade >= 10){
+		faixa_etaria = "PRE-ADOLESCENTE";
+	} else if (idade < 10 && idade >= 0){
+		faixa_etaria = "CRIANCA";
+	} else {
+		printf("Digite uma idade valida!");
+		return 0;
+	}
+
+	printf("Faixa etaria: %s", faixa_etaria);
+
 	return 0;
 }
