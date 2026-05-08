@@ -3,13 +3,13 @@
 int main() {
     FILE *fptr;
 
-    for (int i = 5; i < 10; i++) {
+    for (int i = 1; i <= 8; i++) {
         char filename[150];
 
         printf("\nSalvando outro arquivo...\n");
 
         snprintf(filename, sizeof(filename),
-                 "C:/Users/tonho/CC_417/alg_prog/exercicios/C/src/aulas/Aula08-loops_exec/slide-%d.c", i);
+                 "C:/Users/tonho/CC_417/alg_prog/exercicios/C/src/listas/lista-03/exec%0d.c", i);
 
         printf("%s\n", filename);
 

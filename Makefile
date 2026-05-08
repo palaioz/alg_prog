@@ -4,7 +4,18 @@ SRC_DIR = src
 OBJ_DIR = obj
 BIN_DIR = bin
 
-SOURCES := $(wildcard $(SRC_DIR)/*.c) $(wildcard $(SRC_DIR)/**/*.c)
+SHELL := cmd.exe
+
+# Busca em:
+# 1. src/*.c (raiz)
+# 2. src/*/*.c (ex: src/aulas/prog.c ou src/listas/main.c)
+# 3. src/*/*/*.c (ex: src/listas/lista-01/exercicio.c)
+SOURCES := $(wildcard $(SRC_DIR)/*.c) \
+           $(wildcard $(SRC_DIR)/*/*.c) \
+           $(wildcard $(SRC_DIR)/*/*/*.c)
+
+# Caso precise se certificar de que encontrou os SOURCES
+# $(info Arquivos encontrados: $(SOURCES))
 OBJECTS := $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SOURCES))
 BINARIES := $(patsubst $(SRC_DIR)/%.c,$(BIN_DIR)/%,$(SOURCES))
 
@@ -23,11 +34,11 @@ endif
 all: $(TARGET)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@if not exist $(subst /,\,$(dir $@)) mkdir $(subst /,\,$(dir $@))
+	@if not exist "$(subst /,\,$(dir $@))" mkdir "$(subst /,\,$(dir $@))"
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(BIN_DIR)/%: $(OBJ_DIR)/%.o
-	@if not exist $(subst /,\,$(dir $@)) mkdir $(subst /,\,$(dir $@))
+	@if not exist "$(subst /,\,$(dir $@))" mkdir "$(subst /,\,$(dir $@))"
 	$(CC) $< -o $@
 
 run: $(TARGET)

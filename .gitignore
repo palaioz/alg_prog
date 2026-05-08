@@ -1,5 +1,8 @@
 *.vscode
 *.zip
+bin
+obj
+
 
 # Prerequisites
 *.d
