@@ -1,6 +1,7 @@
 // 3. Somar uma sequencia de números digitados enquanto os números são diferentes de zero
 
 #include <stdio.h>
+#include <stdlib.h>
 
 int main(){
 	float num, soma = 0;
@@ -16,6 +17,7 @@ int main(){
 
 	if (input == 1){
 		while(1){
+			system("cls");
 			printf("Resultado atual: %.2f", soma);
 			printf("\nDigite um numero para adicionar ou subtrair: ");
 			scanf("%f", &num);
