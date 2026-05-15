@@ -14,18 +14,19 @@ int main(){
 	int n, p1, p2;
 	int soma;
 
-	scanf("%i", &n);
+	for (n = 1000; n < 10000; n++){
+		p1 = n / 100;
+		p2 = n % 100;
 
-	p1 = n / 100;
-	p2 = n % 100;
+		soma = p1 + p2;
 
-	soma = p1 + p2;
-
-	if(soma * soma == n){
-		printf("O numero obedece a regra");
-	} else {
-		printf("O numero NAO obedece a regra");
+		int pot = soma * soma;
+		
+		if (pot == n){
+			printf("%d\n", pot);
+		}
 	}
-	
+
 	return 0;
 }
+

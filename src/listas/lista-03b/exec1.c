@@ -3,7 +3,17 @@
 */
 
 #include <stdio.h>
+
 int main(){
-	printf("Hello World");
+	
+	for (int i = 1; i < 11; i++){
+		printf("Tabuada do %d\n", i);
+		printf("----------------\n");
+		for (int j = 1; j < 11; j++){
+			printf("%d\n", j * i);
+		}
+		printf("\n");
+	}
+
 	return 0;
 }
