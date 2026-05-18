@@ -3,7 +3,37 @@
 */
 
 #include <stdio.h>
+#include <stdlib.h>
+
 int main(){
-	printf("Hello World");
+	int numMaior, numMenor;
+	int loc;
+	
+	printf("Digite um numero: ");
+	scanf("%d", &loc);
+	
+	numMaior = loc;
+	numMenor = loc;
+
+	while(1){
+		system("cls");
+		if (numMaior && numMenor){
+			printf("Maior Numero: %d\n", numMaior);
+			printf("Menor Numero: %d\n", numMenor);
+		}
+
+		printf("Digite outro numero: \n");
+		scanf("%d", &loc);
+	
+		if (loc > numMaior){
+			numMaior = loc;
+		} else if (loc < numMenor){
+			numMenor = loc;
+		} else {
+			continue;
+		}
+
+	}
+
 	return 0;
 }

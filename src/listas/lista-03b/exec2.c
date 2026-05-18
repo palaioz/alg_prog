@@ -10,7 +10,7 @@ números ímpares maiores que o número lido e menores que 1000.
 int main(){
 	SetConsoleOutputCP(65001);
     setlocale(LC_ALL, "pt_BR.UTF-8");
-
+	
 	int num;
 
 	printf("Escolha um número inteiro menor que 1000: ");

@@ -5,7 +5,17 @@ aritmética. Calcule e mostre os 10 elementos seguintes.
 */
 
 #include <stdio.h>
+
 int main(){
-	printf("Hello World");
+	int p1, razao;
+
+	printf("Digite o primeiro termo e a razao da progressao aritmetica: ");
+	scanf("%d %d", &p1, &razao);
+
+	for (int i = 1; i < 11; i++){
+		printf("Elem. %d = %d\n", i, p1);
+		p1 += razao;
+	}
+	
 	return 0;
 }
