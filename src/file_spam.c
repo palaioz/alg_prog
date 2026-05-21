@@ -9,7 +9,7 @@ int main() {
         printf("\nSalvando outro arquivo...\n");
 
         // snprintf(filename, sizeof(filename), "C:/Users/tonho/CC_417/alg_prog/exercicios/C/src/listas/lista-03/exec%0d.c", i);
-        snprintf(filename, sizeof(filename), "C:/Users/laboratorio/alg_prog/alg_prog/src/listas/lista-03b/exec%0d.c", i);
+        snprintf(filename, sizeof(filename), "C:/Users/laboratorio/alg_prog/alg_prog/src/listas/trabalho_01/exec%0d.c", i);
 
         printf("%s\n", filename);
 
