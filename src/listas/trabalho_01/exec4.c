@@ -10,7 +10,35 @@ atual, o que corresponde a 1984616 km2.”
 */
 
 #include <stdio.h>
+#include <windows.h>
+#include <locale.h>
+
 int main(){
-	printf("Hello World");
-	return 0;
+    SetConsoleOutputCP(65001);
+    setlocale(LC_ALL, "pt_BR.UTF-8");
+
+    float area_inicial, area_atual, taxa;
+    float limite_20_porcento;
+    int ano_atual = 2026;
+
+    // ---------- INPUT
+    printf("Digite a área total da floresta (km²): ");
+    scanf("%f", &area_inicial);
+    printf("Digite a taxa de desmatamento anual (em %%): ");
+    scanf("%f", &taxa);
+
+    // ---------- PROCESSAMENTO
+    area_atual = area_inicial;
+    limite_20_porcento = area_inicial * 0.20;
+
+    while (area_atual >= limite_20_porcento) {
+        area_atual = area_atual - (area_atual * (taxa / 100.0));
+        ano_atual++;
+    }
+
+    // ---------- OUTPUT
+    printf("\nEm %d, a área estará reduzida a menos ou igual a 20%% de sua área atual,\n", ano_atual);
+    printf("o que corresponde a %.0f km².\n", area_atual);
+
+    return 0;
 }
