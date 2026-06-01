@@ -13,40 +13,50 @@ c) A média de peso dos bois
 #include <locale.h>
 
 int main(){
-	SetConsoleOutputCP(65001);
+    SetConsoleOutputCP(65001);
     setlocale(LC_ALL, "pt_BR.UTF-8");
 
-	int qtd_bois = 20;
+    int qtd_bois = 20;
+    int lista_num[20] = {0};
+    float lista_pesos[20] = {0};
 
-	int num_boi;
-	float peso_boi;
+    int id_gordo, id_magro;
+    float peso_gordo, peso_magro;
+    float soma_pesos = 0.0;
 
-	int lista_num[20] = {0};
-	float lista_pesos[20] = {0};
-	
-	// ---------- INPUT
+    // ---------- INPUT
+    for (int i = 0; i < qtd_bois; i++){
+        printf("Digite o número de identificação do %dº boi: ", i + 1);
+        scanf("%d", &lista_num[i]);
+        printf("Digite o peso do animal (em kg): ");
+        scanf("%f", &lista_pesos[i]);
+    }
 
-	for (int i = 0; i < qtd_bois; i++){
-		// printf("Digite o número de série do animal: ");
-		// scanf("%d", &num_boi);
-		// printf("Digite o peso do animal (em kg): ");
-		// scanf("%f", &peso_boi);
+    // ---------- MAX & MIN & MÉDIA
+    peso_gordo = lista_pesos[0];
+    id_gordo = lista_num[0];
+    peso_magro = lista_pesos[0];
+    id_magro = lista_num[0];
 
-		num_boi = i + 1;
-		peso_boi = i * 20;
+    for (int i = 0; i < qtd_bois; i++){
+        soma_pesos += lista_pesos[i];
 
-		lista_num[i] = num_boi;
-		lista_pesos[i] = peso_boi;
-	}
+        if (lista_pesos[i] > peso_gordo) {
+            peso_gordo = lista_pesos[i];
+            id_gordo = lista_num[i];
+        }
+        if (lista_pesos[i] < peso_magro) {
+            peso_magro = lista_pesos[i];
+            id_magro = lista_num[i];
+        }
+    }
 
-	// ---------- MAX & MIN & MÉDIA
+    // ---------- OUTPUT
+    printf("\n---------------- RELATÓRIO FINAL ----------------\n");
+    printf("Boi mais gordo \t|\t ID: %d \t|\t Peso: %.2f kg\n", id_gordo, peso_gordo);
+    printf("Boi mais magro \t|\t ID: %d \t|\t Peso: %.2f kg\n", id_magro, peso_magro);
+    printf("Média de peso dos bois: %.2f kg\n", soma_pesos / qtd_bois);
+    printf("-------------------------------------------------\n");
 
-
-	// ---------- OUTPUT
-
-	for (int i = 0; i < qtd_bois; i++){
-		printf("N° de série: 0%d \t|\t Peso: %.2f\n", lista_num[i], lista_pesos[i]);
-	}
-
-	return 0;
+    return 0;
 }
