@@ -16,39 +16,38 @@ escrever que não foi possível calcular as raízes. Se a = 0, ele deve escrever
 #include <math.h>
 
 int main(){
-	SetConsoleOutputCP(65001);
+    SetConsoleOutputCP(65001);
     setlocale(LC_ALL, "pt_BR.UTF-8");
 
-	float a, b, c;
-	double x1, x2;
-	double delta;
+    float coef[3]; // coef[0]=a, coef[1]=b, coef[2]=c
+    float delta, x1, x2;
 
-	while (1)
-	{
-		system("cls");
+    while(1) {
+        // ---------- INPUT
+        printf("\nDigite os coeficientes a, b e c (separados por espaço ou 0 0 0 para sair): ");
+        scanf("%f %f %f", &coef[0], &coef[1], &coef[2]);
 
-		printf("CALCULAR FÓRMULA DE BÁSKARA\n");
-		printf("============================\n");
-		printf("Função quadrática: ax2 + bx + c\n");
-		printf("Raízes: x = (-b ± √(b2-4ac))/2a\n\n");
+        if (coef[0] == 0 && coef[1] == 0 && coef[2] == 0) {
+            printf("Execução interrompida pelo usuário.\n");
+            break;
+        }
 
-		printf("Digite o valor dos coeficientes A, B e C (a b c): ");
-		scanf("%f %f %f", &a, &b, &c);
+        // ---------- PROCESSAMENTO & OUTPUT
+        if (coef[0] == 0) {
+            printf("Aviso: 'a' é igual a 0. A equação é de primeiro grau.\n");
+        } else {
+            delta = (coef[1] * coef[1]) - (4 * coef[0] * coef[2]);
 
-		if (a == 0 && b == 0 && c == 0)
-		{
-			return 0;
-		}
+            if (delta < 0) {
+                printf("Erro: O delta é negativo (%.2f). Raízes imaginárias.\n", delta);
+            } else {
+                x1 = (-coef[1] + sqrt(delta)) / (2 * coef[0]);
+                x2 = (-coef[1] - sqrt(delta)) / (2 * coef[0]);
 
-		delta = (b * b) - (4 * a * c);
-		x1 = ((-1 * b) + sqrt(delta))/2 * a;
-		x2 = ((-1 * b) - sqrt(delta))/2 * a;
+                printf("Resultado \t|\t x1 = %.2f \t|\t x2 = %.2f\n", x1, x2);
+            }
+        }
+    }
 
-		printf("\nResultado: x1 = %f \t|\t x2 = %f\n", x1, x2);
-
-		system("pause");
-	}
-
-
-	return 0;
+    return 0;
 }
