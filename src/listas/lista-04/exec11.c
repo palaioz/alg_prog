@@ -6,7 +6,46 @@ elemento até o primeiro.
 */
 
 #include <stdio.h>
-int main(){
-	printf("Hello World");
-	return 0;
+
+int main() {
+    int codigo;
+    float vetor[50]; 
+
+    printf("Digite o codigo (0: Sair, 1: Ordem Direta, 2: Ordem Inversa): ");
+    scanf("%d", &codigo);
+
+    if (codigo == 0) {
+        printf("Algoritmo terminado.\n");
+        return 0;
+    }
+
+    if (codigo != 1 && codigo != 2) {
+        printf("Codigo invalido! Encerrando o programa.\n");
+        return 0;
+    }
+
+    printf("\nDigite os 50 numeros para preencher o vetor:\n");
+    for (int i = 0; i < 50; i++) {
+        printf("Posicao [%d]: ", i);
+        scanf("%f", &vetor[i]);
+    }
+
+
+    if (codigo == 1) {
+        printf("\nVetor na ordem em que foi lido:\n");
+        for (int i = 0; i < 50; i++) {
+            printf("%.2f ", vetor[i]);
+        }
+        printf("\n");
+    } 
+    else if (codigo == 2) {
+        printf("\nVetor na ordem inversa:\n");
+        
+        for (int i = 49; i >= 0; i--) {
+            printf("%.2f ", vetor[i]);
+        }
+        printf("\n");
+    }
+
+    return 0;
 }

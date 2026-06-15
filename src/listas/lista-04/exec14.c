@@ -10,24 +10,27 @@ segundo uma linha abaixo.
 
 int main(){
 	int Avec[20] = {0};
+	int Bvec[20] = {0};
+
 	for(int i = 0; i < 20; i++){
 		Avec[i] = i + 2;
 	}
 	
-	int Bvec[20] = {0};
-	for(int i = 19; i > 0; i--){
-		for(int j = 0; j < 20; j++){
-			Bvec[j] = Avec[i];
-		}
+	for(int i = 0; i < 20; i++){
+		Bvec[19 - i] = Avec[i];
 	}
 
-	for(int i = 0; i < 2; i++){
-		printf("%d -> ", i+1);
-		for(int j = 0; j < 20; j++){
-			printf("%d\t", Avec[i]);
-		}
-		printf("\n");
+	printf("Primeiro vetor (Avec): \n");
+	for (int i = 0; i < 20; i++){
+		printf("%3d ", Avec[i]);
 	}
+	printf("\n\n");
+
+	printf("Segundo vetor (Bvec - invertido):\n");
+	for (int i = 0; i < 20; i++){
+		printf("%3d ", Bvec[i]);
+	}
+	printf("\n");
 
 	return 0;
 }
