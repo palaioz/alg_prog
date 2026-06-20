@@ -19,9 +19,10 @@ int main(){
 	printf("\nMatriz completa: ");
 	for (int i = 0; i < 3; i++)
 	{
+		printf("\n");
 		for (int j = 0; j < 5; j++)
 		{
-			printf("\nMatriz[%d][%d]: %d", i, j, matriz[i][j]);
+			printf("\t%d", matriz[i][j]);
 		}
 	}
 	

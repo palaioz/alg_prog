@@ -32,18 +32,20 @@ int main(){
 	printf("\nAntiga matriz: ");
 	for (int i = 0; i < 3; i++)
 	{
+		printf("\n");
 		for (int j = 0; j < 2; j++)
 		{
-			printf("\nmatriz[%d][%d]: %d", i, j, matriz[i][j]);
+			printf("\t%d", matriz[i][j]);
 		}
 	}
 
 	printf("\n\nNova matriz: ");
 	for (int i = 0; i < 3; i++)
 	{
+		printf("\n");
 		for (int j = 0; j < 2; j++)
 		{
-			printf("\nnova_matriz[%d][%d]: %d", i, j, nova_matriz[i][j]);
+			printf("\t%d", nova_matriz[i][j]);
 		}
 	}
 
