@@ -13,7 +13,50 @@ d) Identifique e mostre as áreas que produziram acima da média e abaixo da mé
 
 #include <stdio.h>
 
+#define LINHAS 2
+#define COLUNAS 4
+
 int main(){
-	printf("Hello World");
+	float lavoura[LINHAS][COLUNAS];
+	float soma = 0.0, media = 0.0;
+	int i, j;
+	
+
+	// Armazenar os índices de produtividade
+	printf("\n--- Cadastro de Produtividade (Sacos/Hectare) ---\n");
+	for(i = 0; i < LINHAS; i++)
+	{
+		for(j = 0; j < COLUNAS; j++)
+		{
+			printf("Digite a produtividade da area A[%d][%d]: ", i, j);
+			scanf("%f", &lavoura[i][j]);
+			soma += lavoura[i][j];
+		}
+	}
+
+	// Média de produtividade
+	media = soma / (LINHAS * COLUNAS);
+	printf("\n-----------------------------------------");
+	printf("\nMedia de produtividade da lavoura: %.2f sacos/hectare", media);
+	printf("\n-----------------------------------------\n");
+
+	// Áreas acima e abaixo da média
+	printf("\n--- Analise de Desempenho por Area ---\n");
+	for(i = 0; i < LINHAS; i++)
+	{
+		for(j = 0; j < COLUNAS; j++)
+		{
+			printf("Area A[%d][%d] (%.2f sacos/hectare): ", i, j, lavoura[i][j]);
+
+			if(lavoura[i][j] > media){
+				printf("ACIMA DA MEDIA\n");
+			} else if(lavoura[i][j] < media){
+				printf("ABAIXO DA MEDIA\n");
+			} else {
+				printf("NA MEDIA\n");
+			}
+		}
+	}
+	
 	return 0;
 }
