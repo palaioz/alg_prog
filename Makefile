@@ -73,3 +73,8 @@ endif
 clean:
 	@if exist $(OBJ_DIR) rd /s /q $(OBJ_DIR)
 	@if exist $(BIN_DIR) rd /s /q $(BIN_DIR)
+
+# Mostrar toda a estrutura de diretorios, pastas e arquivos
+tree:
+	@echo Estrutura de diretorios do projeto:
+	@tree /f /a
