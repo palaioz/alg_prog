@@ -19,6 +19,11 @@ int main(){
     printf("\nQuantos caracteres deseja remover do inicio? ");
     scanf("%d", &rmv);
 
+    if (rmv < 0)
+    {
+        rmv = (-rmv) % tam;
+    }
+
     char *cut_word = word + rmv;
 
     printf("\nOriginal: %s", word);

@@ -24,7 +24,9 @@ int main(){
 
     int n = 0, i, j;
     int A[MAX_N][MAX_N], B[MAX_N][MAX_N], C[MAX_N][MAX_N], D[MAX_N][MAX_N];
+    int vetor[MAX_N];
     int opcao = -1;
+    int menor, linha, coluna, k;
 
     // --- VALIDANDO O TAMANHO N ---
     while (n <= 0 || n > MAX_N) 
@@ -45,7 +47,7 @@ int main(){
     }
 
     // --- MOSTRAR AS MATRIZES GERADAS ---
-    printf("\n=== MATRIZES GERADAS ALEATÓRIAMENTE ===");
+    printf("\n=== MATRIZES GERADAS ALEATORIAMENTE ===");
 
     printf("\nMatriz A:\n");
     for(i = 0; i < n; i++)
@@ -97,7 +99,7 @@ int main(){
                 break;
 
             case 2:
-                int menor = A[0][0];
+                menor = A[0][0];
                 int min_i = 0, min_j =0;
                 for(i = 0; i < n; i++)
                 {
@@ -114,12 +116,11 @@ int main(){
                 break;
 
             case 3:
-                int linha;
                 printf("Informe a linha desejada (0 a %d): ", n - 1);
                 scanf("%d", &linha);
                 if (linha >= 0 && linha < n)
                 {
-                    printf("Linha % de A: ", linha);
+                    printf("Linha %d de A: ", linha);
                     for(j = 0; j < n; j++)
                     {
                         printf("%d ", A[linha][j]);
@@ -131,7 +132,6 @@ int main(){
                 break;
 
             case 4:
-                int coluna, vetor[MAX_N];
                 printf("Informe a coluna desejada (0 a %d): ", n - 1);
                 scanf("%d", &coluna);
                 if (coluna >= 0 && coluna < n) 
@@ -149,7 +149,6 @@ int main(){
                 break;
 
             case 5:
-                int k;
                 printf("Informe o valor de k: ");
                 scanf("%d", &k);
                 printf("\nMatriz D (k * B):\n");
